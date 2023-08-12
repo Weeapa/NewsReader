@@ -9,17 +9,50 @@ import UIKit
 import Foundation
 import RxSwift
 import RxCocoa
+import RxDataSources
+
+
+extension TopStoryHeadline: IdentifiableType, Hashable{
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(title)
+    }
+    
+    
+    static func == (lhs: TopStoryHeadline, rhs: TopStoryHeadline) -> Bool {
+        lhs.title == rhs.title
+    }  
+    
+    var identity: some Hashable {
+        title
+    }
+}
+
+struct NewsSection{
+    var identity: String
+    var items: [TopStoryHeadline]
+}
+
+
+extension NewsSection: AnimatableSectionModelType{
+    init(original: NewsSection, items: [TopStoryHeadline]) {
+        self = original
+        self.items = items 
+    }
+}
 
 final class HeadlinesViewModel {
-    let headline: Driver<[TopStoryHeadline]>
+    
+  
+    
+    let headline: Driver<[NewsSection]>
     
     private let service: NewsServiceType
     
     init (service: NewsServiceType){
         self.service = service
         
-        headline = service
-            .getTopHeadlines()
-            .asDriver(onErrorJustReturn: [])
+        headline = .empty()
+//            .getTopHeadlines()
+//            .asDriver(onErrorJustReturn: [])
     }
 }

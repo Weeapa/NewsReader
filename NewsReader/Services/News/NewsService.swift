@@ -14,7 +14,17 @@ protocol NewsServiceType{
 
 final class NewsService: NewsServiceType{
     func getTopHeadlines() -> Observable<[TopStoryHeadline]>  {
-        return Observable.never()
+        return Observable.just([
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            TopStoryHeadline(title: UUID().uuidString, url: ""),
+        ])
     }
     
 }

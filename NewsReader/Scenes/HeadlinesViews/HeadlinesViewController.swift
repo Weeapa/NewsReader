@@ -9,6 +9,10 @@ import UIKit
 import RxSwift
 import RxDataSources
 
+private enum Constans{
+    static let headlineCell = "headline-cell"
+}
+
 final class HeadlinesViewController: UIViewController {
     
     
@@ -16,8 +20,10 @@ final class HeadlinesViewController: UIViewController {
     
     typealias ViewModel = HeadlinesViewModel
     
-    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<NewsSection> { dataSource, tableView, IndexPath, item in
-        fatalError()
+    private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<NewsSection> { (dataSource,
+                                                                                         tableView: UITableView, IndexPath, item) in
+        let cell = tableView.dequeueReusableCell(withIdentifier: Constans.headlineCell) as! HeadlineCell
+        return cell
     }
     
     let viewModel: ViewModel
@@ -33,6 +39,12 @@ final class HeadlinesViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        configureViews()
+    }
 }
 
 private extension HeadlinesViewController{
@@ -43,8 +55,12 @@ private extension HeadlinesViewController{
     }
     
     func configureTableView(){
+        let nib = UINib(nibName: "HeadlineCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: Constans.headlineCell)
+        
+        
         viewModel
-            .headline
+            .headlines
             .drive(
                 tableView.rx.items(dataSource: dataSource)
             )

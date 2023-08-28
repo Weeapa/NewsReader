@@ -36,7 +36,7 @@ struct NewsSection{
 extension NewsSection: AnimatableSectionModelType{
     init(original: NewsSection, items: [TopStoryHeadline]) {
         self = original
-        self.items = items 
+        self.items = items
     }
 }
 
@@ -44,15 +44,26 @@ final class HeadlinesViewModel {
     
   
     
-    let headline: Driver<[NewsSection]>
+    let headlines: Driver<[NewsSection]>
     
     private let service: NewsServiceType
     
     init (service: NewsServiceType){
         self.service = service
         
-        headline = .empty()
-//            .getTopHeadlines()
-//            .asDriver(onErrorJustReturn: [])
+    
+        
+        headlines = service
+            .getTopHeadlines()
+            .map{ headlines in
+                return [
+                    NewsSection(
+                        identity: UUID().uuidString,
+                        items: headlines
+                    )
+                ]
+            }
+            .asDriver(onErrorJustReturn: [])
+        
     }
 }

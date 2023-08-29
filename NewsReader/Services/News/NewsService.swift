@@ -21,9 +21,7 @@ final class NewsService: NewsServiceType{
             TopStoryHeadline(title: UUID().uuidString, url: ""),
             TopStoryHeadline(title: UUID().uuidString, url: ""),
             TopStoryHeadline(title: UUID().uuidString, url: ""),
-            TopStoryHeadline(title: UUID().uuidString, url: ""),
-            TopStoryHeadline(title: UUID().uuidString, url: ""),
-            TopStoryHeadline(title: UUID().uuidString, url: ""),
+            
         ])
     }
     

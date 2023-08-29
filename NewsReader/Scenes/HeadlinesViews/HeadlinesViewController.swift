@@ -23,8 +23,13 @@ final class HeadlinesViewController: UIViewController {
     private lazy var dataSource = RxTableViewSectionedAnimatedDataSource<NewsSection> { (dataSource,
                                                                                          tableView: UITableView, IndexPath, item) in
         let cell = tableView.dequeueReusableCell(withIdentifier: Constans.headlineCell) as! HeadlineCell
+       
+        cell.configure(with: item)
         return cell
+     
     }
+    
+    
     
     let viewModel: ViewModel
     

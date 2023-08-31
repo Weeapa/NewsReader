@@ -63,6 +63,12 @@ private extension HeadlinesViewController{
         let nib = UINib(nibName: "HeadlineCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: Constans.headlineCell)
         
+        tableView.rx
+            .itemSelected
+            .subscribe(onNext:{ [unowned self] ip in
+                tableView.deselectRow(at: ip, animated: true)
+            })
+            .disposed(by: disposeBag)
         
         viewModel
             .headlines

@@ -421,7 +421,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3N48HVN9F4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsReader/Info.plist;
+				INFOPLIST_FILE = SimiAviApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -449,7 +449,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 3N48HVN9F4;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = NewsReader/Info.plist;
+				INFOPLIST_FILE = SimiAviApp/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
